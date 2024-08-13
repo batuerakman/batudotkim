@@ -1,0 +1,40 @@
+name: batu
+description: "portfolio"
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+
+flutter:
+  assets:
+  - assets/ScreenRef.png
+  - assets/icons/pinIcon.png
+  - assets/icons/discIcon.png
+  - assets/home/githubBg.png
+  - assets/home/gokuNukuBg.png
+  - assets/home/spotifyBg.png
+  
+  fonts:
+    - family: SegoeUI
+      fonts: 
+        - asset: assets/fonts/Segoe-UI-Regular.ttf
+        - asset: assets/fonts/Segoe-UI-Bold.ttf
+        - asset: assets/fonts/Segoe-UI-Light.ttf
+
+  uses-material-design: true
