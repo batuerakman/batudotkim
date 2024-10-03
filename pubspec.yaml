@@ -2,7 +2,6 @@ name: batu
 description: "portfolio"
 publish_to: 'none'
 
-
 version: 1.0.0+1
 
 environment:
@@ -11,10 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.6
   url_launcher: ^6.3.0
-  flutter_carousel_widget: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +24,8 @@ flutter:
   - assets/ScreenRef.png
   - assets/icons/pinIcon.png
   - assets/icons/discIcon.png
+  - assets/icons/mail.png
+  - assets/icons/person.png
   - assets/home/githubBg.png
   - assets/home/gokuNukuBg.png
   - assets/home/spotifyBg.png

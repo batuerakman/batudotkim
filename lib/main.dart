@@ -9,11 +9,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'my portfolio site',
-        theme: ThemeData(
-          useMaterial3: true,
-        ),
-        home: const HomePage());
+    return const MaterialApp(title: 'batu', debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
