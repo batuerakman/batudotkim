@@ -17,18 +17,23 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text('bing', style: menuLabel),
-                    Text('home', style: menuLabelSelected),
-                    Text('social', style: menuLabel),
-                    Text('games', style: menuLabel),
-                    Text('tv & movies', style: menuLabel),
-                    Text('music', style: menuLabel),
-                    Text('apps', style: menuLabel),
-                    Text('settings', style: menuLabel),
-                  ],
+                Center(
+                  child: SizedBox(
+                    width: 1350,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('bing', style: menuLabel),
+                        Text('home', style: menuLabelSelected),
+                        Text('social', style: menuLabel),
+                        Text('games', style: menuLabel),
+                        Text('tv & movies', style: menuLabel),
+                        Text('music', style: menuLabel),
+                        Text('apps', style: menuLabel),
+                        Text('settings', style: menuLabel),
+                      ],
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 32),
                 const DashboardWidget(),

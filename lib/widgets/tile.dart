@@ -113,9 +113,9 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                   return Transform.scale(
                     scale: _scaleAnimation.value,
                     child: Container(
-                      color: Colors.transparent,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
+                        color: Colors.transparent,
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.2),
@@ -131,8 +131,8 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                             padding: const EdgeInsets.all(2.5),
                             child: Positioned.fill(
                               child: Container(
-                                color: Colors.transparent,
                                 decoration: BoxDecoration(
+                                  color: Colors.transparent,
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomCenter,
