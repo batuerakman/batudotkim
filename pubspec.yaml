@@ -24,6 +24,9 @@ dev_dependencies:
 flutter:
   assets:
   - assets/ScreenRef.png
+  - assets/bentoPenguinAvatar.png
+  - assets/icons/g.png
+  - assets/icons/buttonA.png
   - assets/icons/pinIcon.png
   - assets/icons/discIcon.png
   - assets/icons/mail.png
