@@ -74,12 +74,9 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
       style: defaultTextStyle.style,
       child: MediaQuery(
         data: MediaQuery.of(context),
-        child: Theme(
-          data: Theme.of(context),
-          child: SizedBox.fromSize(
-            size: size,
-            child: widget.child,
-          ),
+        child: SizedBox.fromSize(
+          size: size,
+          child: widget.child,
         ),
       ),
     );
@@ -94,6 +91,8 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
     final Size size = renderBox.size;
 
     _overlayEntry = OverlayEntry(
+      opaque: false,
+      canSizeOverlay: false,
       builder: (context) => Positioned(
         width: size.width,
         height: size.height,
