@@ -168,19 +168,22 @@ class DashboardWidget extends StatelessWidget {
                         child: Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
-                            const Image(image: AssetImage('assets/home/gokuNukuBg.png')),
+                            const Image(
+                              image: AssetImage('assets/home/gokuNukuBg.png'),
+                              fit: BoxFit.cover,
+                            ),
                             Container(
-                              height: 50,
-                              width: 695,
-                              color: Colors.black.withOpacity(0.4),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  'soon',
-                                  style: itemLabel,
+                              decoration: BoxDecoration(
+                                gradient: RadialGradient(
+                                  radius: 2,
+                                  colors: [
+                                    Colors.transparent,
+                                    Colors.black.withOpacity(0.2),
+                                  ],
+                                  stops: const [0.3, 0.8],
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
