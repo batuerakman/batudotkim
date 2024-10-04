@@ -126,9 +126,9 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                         clipBehavior: Clip.none,
                         children: [
                           _buildChildClone(size),
-                          Padding(
-                            padding: const EdgeInsets.all(2.5),
-                            child: Positioned.fill(
+                          Positioned.fill(
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.5),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
