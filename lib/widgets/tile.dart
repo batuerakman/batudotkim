@@ -44,7 +44,7 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
       reverseCurve: Curves.easeInCubic,
     ));
 
-    _elevationAnimation = Tween<double>(begin: 0, end: 12).animate(
+    _elevationAnimation = Tween<double>(begin: 0, end: 16).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeOutCubic,
@@ -131,12 +131,11 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                               padding: const EdgeInsets.all(2.5),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      Colors.white.withOpacity(0.4 * _highlightAnimation.value),
+                                      Colors.white.withOpacity(0.3 * _highlightAnimation.value),
                                       Colors.transparent,
                                     ],
                                   ),
