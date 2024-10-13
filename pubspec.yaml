@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   url_launcher: ^6.3.0
+  audioplayers: ^6.1.0
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +36,8 @@ flutter:
   - assets/home/githubBg.png
   - assets/home/gokuNukuBg.png
   - assets/home/spotifyBg.png
+  - assets/sounds/hover.wav
+  - assets/sounds/click.wav
   
   fonts:
     - family: SegoeUI

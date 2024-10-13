@@ -1,14 +1,17 @@
+import 'package:batu/controllers/sound_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TileWidget extends StatefulWidget {
   final Widget child;
   final Uri? url;
+  final SoundController soundController;
 
   const TileWidget({
     super.key,
     required this.child,
     this.url,
+    required this.soundController,
   });
 
   @override
@@ -166,14 +169,17 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
   void _handleHoverChange(bool isHovered) {
     if (_isHovered == isHovered) return;
 
+    if (!mounted) return;
+
     setState(() => _isHovered = isHovered);
 
     if (isHovered) {
       _createOverlay(context);
       _controller.forward();
+      widget.soundController.playHoverSound();
     } else {
       _controller.reverse().then((_) {
-        if (!_isHovered) {
+        if (mounted && !_isHovered) {
           _removeOverlay();
         }
       });
@@ -185,12 +191,15 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
       _controller.stop();
     }
 
+    // Play sound and launch URL immediately
+    widget.soundController.playClickSound();
+    if (widget.url != null) {
+      launchUrl(widget.url!);
+    }
+
+    // Perform animation
     await _controller.reverse();
     await _controller.forward();
-
-    if (widget.url != null) {
-      await launchUrl(widget.url!);
-    }
   }
 
   @override
