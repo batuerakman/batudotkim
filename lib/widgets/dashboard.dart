@@ -317,7 +317,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
             },
           );
         } else {
-          return const CircularProgressIndicator();
+          return const SizedBox.shrink();
         }
       },
     );
