@@ -120,7 +120,7 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                         color: Colors.transparent,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black.withAlpha(50),
                             blurRadius: _elevationAnimation.value * 0.5,
                           ),
                         ],
@@ -138,7 +138,7 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      Colors.white.withOpacity(0.3 * _highlightAnimation.value),
+                                      Colors.white.withAlpha((76.5 * _highlightAnimation.value).toInt()),
                                       Colors.transparent,
                                     ],
                                   ),

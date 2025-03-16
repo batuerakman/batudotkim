@@ -1,4 +1,4 @@
-import 'package:batu/theme/texttheme.dart';
+import 'package:batu/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class UserRow extends StatelessWidget {

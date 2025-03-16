@@ -19,11 +19,11 @@ class SoundController extends ChangeNotifier {
       _clickPlayer!.setSource(AssetSource('sounds/click.wav')),
     ]);
     await Future.wait([
-      _hoverPlayer!.setVolume(0.25),
-      _clickPlayer!.setVolume(0.25),
+      _hoverPlayer!.setVolume(0.05),
+      _clickPlayer!.setVolume(0.05),
     ]);
     if (kDebugMode) {
-      print('Sounds initialized with 75% volume');
+      print('Sounds initialized.');
     }
   }
 
