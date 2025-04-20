@@ -1,5 +1,6 @@
 import 'package:batu/controllers/sound_controller.dart';
 import 'package:batu/theme/theme.dart';
+import 'package:batu/widgets/about_dash.dart';
 import 'package:batu/widgets/media_dash.dart';
 import 'package:batu/widgets/placeholder.dart';
 import 'package:batu/widgets/social_dash.dart';
@@ -123,8 +124,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                   SocialPageWidget(), // games
                                   MediaDashWidget(), // tv movies
                                   PlaceholderWidget(), // music
-                                  PlaceholderWidget() // apps
-                                  // about
+                                  PlaceholderWidget(), // apps
+                                  AboutDashWidget(), // about
                                 ],
                               ),
                             ),
