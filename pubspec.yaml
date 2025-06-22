@@ -16,6 +16,7 @@ dependencies:
   provider: ^6.1.2
   http: ^1.3.0
   html: ^0.15.5
+  video_player: ^2.8.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
   - assets/bentoPenguinAvatar.png
   - assets/icons/g.png
   - assets/icons/linkedin.png
+  - assets/icons/dribbble.png
   - assets/icons/buttonA.png
   - assets/icons/pinIcon.png
   - assets/icons/discIcon.png
@@ -38,6 +40,7 @@ flutter:
   - assets/icons/xbox.png
   - assets/icons/steam.png
   - assets/icons/discord.png
+  - assets/projects/tomodoro.mp4
   - assets/home/githubBg.png
   - assets/home/gokuNukuBg.png
   - assets/home/spotifyBg.png

@@ -70,7 +70,7 @@ class AboutDashWidget extends StatelessWidget {
                     ),
                     SizedBox(height: isMobile ? 12 : 16),
                     Text(
-                      'This site is a loving tribute to the iconic Xbox 360 "Metro" UI. As someone who grew up with the 360, its bold, minimalist tiles and smooth transitions left an indelible mark on my appreciation for digital design.',
+                      'This site is a loving tribute to the iconic Xbox 360 "Metro" UI. As someone who grew up with the 360, its bold, minimalist tiles and smooth transitions left an indelible mark on my taste in design.',
                       style: itemLabelLight.copyWith(
                         height: 1.5,
                         fontSize: isMobile ? 14 : 16,
@@ -80,7 +80,7 @@ class AboutDashWidget extends StatelessWidget {
                     ),
                     SizedBox(height: isMobile ? 16 : 24),
                     Text(
-                      'Built with Flutter Web',
+                      'Coded with Flutter',
                       style: itemLabelLight.copyWith(
                         fontSize: isMobile ? 14 : 16,
                         color: Colors.grey.shade400,

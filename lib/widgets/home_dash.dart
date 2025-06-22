@@ -1,5 +1,6 @@
 import 'package:batu/theme/theme.dart';
 import 'package:batu/widgets/tile.dart';
+import 'package:batu/widgets/video_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:batu/controllers/sound_controller.dart';
 import 'package:provider/provider.dart';
@@ -234,7 +235,6 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                           children: [
                             Image(
                               image: AssetImage('assets/icons/linkedin.png'),
-                              height: 125,
                             ),
                           ],
                         ),
@@ -242,31 +242,24 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                     ),
                     TileWidget(
                       soundController: soundController,
+                      url: Uri.parse('https://dribbble.com/batu-erakman'),
                       child: Container(
                         margin: const EdgeInsets.all(2.5),
                         width: 260,
                         height: 195,
-                        color: Colors.white,
-                        child: Stack(
-                          alignment: Alignment.bottomLeft,
+                        color: tileColor,
+                        child: const Stack(
+                          alignment: Alignment.center,
                           children: [
-                            Container(
-                              height: 50,
-                              width: double.infinity,
-                              color: Colors.black.withAlpha(100),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: Text(
-                                  'soon',
-                                  style: itemLabel,
-                                ),
-                              ),
-                            )
+                            Image(
+                              image: AssetImage('assets/icons/dribbble.png'),
+                            ),
                           ],
                         ),
                       ),
                     ),
                     TileWidget(
+                      url: Uri.parse('https://dribbble.com/shots/26178948-tomodoro-Study-App-Concept'),
                       soundController: soundController,
                       child: Container(
                         margin: const EdgeInsets.all(2.5),
@@ -276,6 +269,10 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                         child: Stack(
                           alignment: Alignment.bottomLeft,
                           children: [
+                            const VideoTile(
+                              videoPath: 'assets/projects/tomodoro.mp4',
+                              fit: BoxFit.cover,
+                            ),
                             Container(
                               height: 50,
                               width: double.infinity,
@@ -283,7 +280,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  'soon',
+                                  'Last Project',
                                   style: itemLabel,
                                 ),
                               ),
