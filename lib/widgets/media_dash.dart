@@ -40,14 +40,15 @@ class _MediaDashWidgetState extends State<MediaDashWidget> with SingleTickerProv
             final scale = (constraints.maxWidth / baseWidth).clamp(0.3, 1.0);
             final isMobile = constraints.maxWidth < 900;
 
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                margin: EdgeInsets.only(top: 32 * scale),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
-                  children: [
+            return Center(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  margin: EdgeInsets.only(top: 32 * scale),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
+                    children: [
                     if (isMobile) SizedBox(width: 16 * scale),
                     TileWidget(
                       soundController: soundController,
@@ -139,6 +140,7 @@ class _MediaDashWidgetState extends State<MediaDashWidget> with SingleTickerProv
                   ],
                 ),
               ),
+            ),
             );
           },
         );
