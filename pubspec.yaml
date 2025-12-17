@@ -41,6 +41,9 @@ flutter:
   - assets/icons/steam.png
   - assets/icons/discord.png
   - assets/projects/tomodoro.mp4
+  - assets/projects/vrship.png
+  - assets/projects/caesias.png
+  - assets/home/artstation.png
   - assets/home/githubBg.png
   - assets/home/gokuNukuBg.png
   - assets/home/spotifyBg.png

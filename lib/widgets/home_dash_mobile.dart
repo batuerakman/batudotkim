@@ -184,7 +184,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                       children: [
                         const Positioned.fill(
                           child: Image(
-                            image: AssetImage('home/artstation.png'),
+                            image: AssetImage('assets/home/artstation.png'),
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                           ),

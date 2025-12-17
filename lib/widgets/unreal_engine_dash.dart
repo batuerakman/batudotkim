@@ -44,7 +44,7 @@ class _UnrealEngineDashWidgetState extends State<UnrealEngineDashWidget> {
                             children: [
                               const Positioned.fill(
                                 child: Image(
-                                  image: AssetImage('projects/vrship.png'),
+                                  image: AssetImage('assets/projects/vrship.png'),
                                   fit: BoxFit.cover,
                                   alignment: Alignment.topCenter,
                                 ),
@@ -80,7 +80,7 @@ class _UnrealEngineDashWidgetState extends State<UnrealEngineDashWidget> {
                             children: [
                               const Positioned.fill(
                                 child: Image(
-                                  image: AssetImage('projects/caesias.png'),
+                                  image: AssetImage('assets/projects/caesias.png'),
                                   fit: BoxFit.cover,
                                   alignment: Alignment.topCenter,
                                 ),
