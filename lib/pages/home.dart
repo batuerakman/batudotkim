@@ -2,11 +2,13 @@ import 'package:batu/controllers/sound_controller.dart';
 import 'package:batu/theme/theme.dart';
 import 'package:batu/widgets/about_dash.dart';
 import 'package:batu/widgets/media_dash.dart';
-import 'package:batu/widgets/placeholder.dart';
 import 'package:batu/widgets/social_dash.dart';
+import 'package:batu/widgets/apps_dash.dart';
+import 'package:batu/widgets/unreal_engine_dash.dart';
 
 import 'package:flutter/material.dart';
 import '../widgets/home_dash.dart';
+import '../widgets/home_dash_mobile.dart';
 import '../widgets/background_gradient.dart';
 import '../widgets/user_row.dart';
 import 'package:batu/models/navigation_item.dart';
@@ -69,8 +71,88 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
+  Widget _buildDesktopLayout(BuildContext context, double padding) {
+    return Padding(
+      padding: EdgeInsets.all(padding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const UserRow(),
+          const SizedBox(height: 32),
+          NavigationMenu(
+            selectedItem: _selectedItem,
+            onItemSelected: _onNavigationItemSelected,
+            soundController: Provider.of<SoundController>(context, listen: false),
+          ),
+          const SizedBox(height: 32),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Stack(
+                children: [
+                  ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.white.withAlpha(0),
+                          Colors.white,
+                          Colors.white,
+                          Colors.white.withAlpha(0),
+                        ],
+                        stops: const [0.0, 0.02, 0.98, 1.0],
+                      ).createShader(bounds);
+                    },
+                    blendMode: BlendMode.dstIn,
+                    child: SmoothPageView(
+                      controller: _pageController,
+                      physics: false,
+                      children: const [
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: DashboardHomeWidget(),
+                        ), // home
+                        SocialPageWidget(), // games
+                        MediaDashWidget(), // media
+                        UnrealEngineDashWidget(), // unreal engine
+                        AppsDashWidget(), // apps
+                        AboutDashWidget(), // about
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMobileLayout(BuildContext context, double padding) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(padding),
+          child: const UserRow(),
+        ),
+        const Expanded(
+          child: DashboardHomeMobileWidget(),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final padding = screenWidth < 600 ? 16.0 : (screenWidth < 1200 ? 32.0 : 48.0);
+    final isMobile = screenWidth < 900;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -78,75 +160,20 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           if (!_isLoading)
             FadeTransition(
               opacity: _opacityAnimation,
-              child: Padding(
-                padding: const EdgeInsets.all(48),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const UserRow(),
-                    const SizedBox(height: 32),
-                    NavigationMenu(
-                      selectedItem: _selectedItem,
-                      onItemSelected: _onNavigationItemSelected,
-                      soundController: Provider.of<SoundController>(context, listen: false),
-                    ),
-                    const SizedBox(height: 32),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: Stack(
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Colors.white.withAlpha(0),
-                                    Colors.white,
-                                    Colors.white,
-                                    Colors.white.withAlpha(0),
-                                  ],
-                                  stops: const [0.0, 0.02, 0.98, 1.0],
-                                ).createShader(bounds);
-                              },
-                              blendMode: BlendMode.dstIn,
-                              child: SmoothPageView(
-                                controller: _pageController,
-                                physics: false,
-                                children: const [
-                                  FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: DashboardHomeWidget(),
-                                  ), // home
-                                  SocialPageWidget(), // games
-                                  MediaDashWidget(), // tv movies
-                                  PlaceholderWidget(), // music
-                                  PlaceholderWidget(), // apps
-                                  AboutDashWidget(), // about
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: isMobile
+                  ? _buildMobileLayout(context, padding)
+                  : _buildDesktopLayout(context, padding),
             ),
-          if (!_isLoading)
+          if (!_isLoading && !isMobile)
             Positioned(
-              bottom: 48,
-              left: 128,
+              bottom: padding,
+              left: padding * 2,
               child: FadeTransition(
                 opacity: _opacityAnimation,
                 child: Row(
                   children: [
-                    const Image(height: 32, image: AssetImage('assets/icons/buttonA.png')),
-                    const SizedBox(width: 12),
+                    Image(height: 32 * (padding / 48), image: const AssetImage('assets/icons/buttonA.png')),
+                    SizedBox(width: 12 * (padding / 48)),
                     Text(
                       'Select',
                       style: buttonPressLabel,

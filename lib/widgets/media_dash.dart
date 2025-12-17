@@ -33,20 +33,29 @@ class _MediaDashWidgetState extends State<MediaDashWidget> with SingleTickerProv
   Widget build(BuildContext context) {
     return Consumer<SoundController>(
       builder: (context, soundController, child) {
-        return Center(
-          child: Container(
-            margin: const EdgeInsets.only(top: 32),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TileWidget(
-                  soundController: soundController,
-                  url: Uri.parse('https://letterboxd.com/batuerakm/'),
-                  child: Container(
-                    margin: const EdgeInsets.all(2.5),
-                    width: 400,
-                    height: 400,
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            // Base width for design (400 + 255 + 255 = 910)
+            const baseWidth = 910.0;
+            final scale = (constraints.maxWidth / baseWidth).clamp(0.3, 1.0);
+            final isMobile = constraints.maxWidth < 900;
+
+            return SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin: EdgeInsets.only(top: 32 * scale),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
+                  children: [
+                    if (isMobile) SizedBox(width: 16 * scale),
+                    TileWidget(
+                      soundController: soundController,
+                      url: Uri.parse('https://letterboxd.com/batuerakm/'),
+                      child: Container(
+                        margin: EdgeInsets.all(2.5 * scale),
+                        width: 400 * scale,
+                        height: 400 * scale,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
@@ -61,74 +70,77 @@ class _MediaDashWidgetState extends State<MediaDashWidget> with SingleTickerProv
                             color: Colors.black.withAlpha(100),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 16, bottom: 16),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Latest Watched',
-                                  style: itemLabel,
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 16 * scale, bottom: 16 * scale),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Latest Watched',
+                                      style: itemLabel,
+                                    ),
+                                    Text(
+                                      'Back to the Future (1985)',
+                                      style: itemLabelLight.copyWith(color: Colors.white.withAlpha(128)),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Back to the Future (1985)',
-                                  style: itemLabelLight.copyWith(color: Colors.white.withAlpha(128)),
-                                ),
-                              ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        TileWidget(
+                          soundController: soundController,
+                          url: Uri.parse('https://myanimelist.net/profile/malbatu'),
+                          child: Container(
+                            margin: EdgeInsets.all(2.5 * scale),
+                            width: 255 * scale,
+                            height: 195 * scale,
+                            color: tileColor,
+                            child: const Center(
+                              child: Image(
+                                height: 100,
+                                width: 170,
+                                image: AssetImage('assets/icons/mal.png'),
+                              ),
                             ),
                           ),
-                        )
+                        ),
+
+                        // Letterboxd tile
+                        TileWidget(
+                          soundController: soundController,
+                          url: Uri.parse('https://letterboxd.com/batuerakm/'),
+                          child: Container(
+                            margin: EdgeInsets.all(2.5 * scale),
+                            width: 255 * scale,
+                            height: 195 * scale,
+                            color: tileColor,
+                            child: const Center(
+                              child: Image(
+                                height: 100,
+                                width: 160,
+                                image: AssetImage('assets/icons/letterboxd.png'),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    TileWidget(
-                      soundController: soundController,
-                      url: Uri.parse('https://myanimelist.net/profile/malbatu'),
-                      child: Container(
-                        margin: const EdgeInsets.all(2.5),
-                        width: 255,
-                        height: 195,
-                        color: tileColor,
-                        child: const Center(
-                          child: Image(
-                            height: 100,
-                            width: 170,
-                            image: AssetImage('assets/icons/mal.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // Letterboxd tile
-                    TileWidget(
-                      soundController: soundController,
-                      url: Uri.parse('https://letterboxd.com/batuerakm/'),
-                      child: Container(
-                        margin: const EdgeInsets.all(2.5),
-                        width: 255,
-                        height: 195,
-                        color: tileColor,
-                        child: const Center(
-                          child: Image(
-                            height: 100,
-                            width: 160,
-                            image: AssetImage('assets/icons/letterboxd.png'),
-                          ),
-                        ),
-                      ),
-                    ),
+                    if (isMobile) SizedBox(width: 16 * scale),
                   ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );

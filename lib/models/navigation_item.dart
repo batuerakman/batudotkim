@@ -8,9 +8,9 @@ extension NavigationItemExtension on NavigationItem {
       case NavigationItem.games:
         return 'games';
       case NavigationItem.tvMovies:
-        return 'tv & movies';
+        return 'media';
       case NavigationItem.music:
-        return 'music';
+        return 'unreal engine';
       case NavigationItem.apps:
         return 'apps';
       case NavigationItem.about:

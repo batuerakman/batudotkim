@@ -17,9 +17,12 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final menuWidth = (screenWidth * 0.8).clamp(300.0, 1350.0);
+
     return Center(
       child: SizedBox(
-        width: 1350,
+        width: menuWidth,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: NavigationItem.values.map((item) {

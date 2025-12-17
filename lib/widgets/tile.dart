@@ -6,12 +6,14 @@ class TileWidget extends StatefulWidget {
   final Widget child;
   final Uri? url;
   final SoundController soundController;
+  final VoidCallback? onTap;
 
   const TileWidget({
     super.key,
     required this.child,
     this.url,
     required this.soundController,
+    this.onTap,
   });
 
   @override
@@ -191,9 +193,11 @@ class _TileWidgetState extends State<TileWidget> with SingleTickerProviderStateM
       _controller.stop();
     }
 
-    // Play sound and launch URL immediately
+    // Play sound and handle tap/URL immediately
     widget.soundController.playClickSound();
-    if (widget.url != null) {
+    if (widget.onTap != null) {
+      widget.onTap!();
+    } else if (widget.url != null) {
       launchUrl(widget.url!);
     }
 

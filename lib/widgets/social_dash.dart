@@ -16,21 +16,30 @@ class _SocialPageWidgetState extends State<SocialPageWidget> {
   Widget build(BuildContext context) {
     return Consumer<SoundController>(
       builder: (context, soundController, child) {
-        return Center(
-          child: SingleChildScrollView(
-            child: Container(
-              margin: const EdgeInsets.only(top: 32),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TileWidget(
-                    url: Uri.parse('https://steamcommunity.com/id/kozetsu'),
-                    soundController: soundController,
-                    child: Container(
-                      margin: const EdgeInsets.all(2.5),
-                      color: tileColor,
-                      width: 300,
-                      height: 200,
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            // Base width for design (3 tiles at 300px each)
+            const baseWidth = 900.0;
+            final scale = (constraints.maxWidth / baseWidth).clamp(0.3, 1.0);
+            final isMobile = constraints.maxWidth < 900;
+
+            return Center(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  margin: EdgeInsets.only(top: 32 * scale),
+                  child: Row(
+                    mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
+                    children: [
+                      if (isMobile) SizedBox(width: 16 * scale),
+                      TileWidget(
+                        url: Uri.parse('https://steamcommunity.com/id/kozetsu'),
+                        soundController: soundController,
+                        child: Container(
+                          margin: EdgeInsets.all(2.5 * scale),
+                          color: tileColor,
+                          width: 300 * scale,
+                          height: 200 * scale,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,27 +48,27 @@ class _SocialPageWidgetState extends State<SocialPageWidget> {
                           const Center(
                             child: Image(height: 100, image: AssetImage('assets/icons/steam.png')),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8, left: 16),
-                            child: FittedBox(
-                              child: Text(
-                                'Steam',
-                                style: itemLabelLight,
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 8 * scale, left: 16 * scale),
+                              child: FittedBox(
+                                child: Text(
+                                  'Steam',
+                                  style: itemLabelLight,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  TileWidget(
-                      url: Uri.parse('https://www.xbox.com/en-US/play/user/Baturhancan'),
-                      soundController: soundController,
-                      child: Container(
-                        margin: const EdgeInsets.all(2.5),
-                        color: tileColor,
-                        width: 300,
-                        height: 200,
+                    TileWidget(
+                        url: Uri.parse('https://www.xbox.com/en-US/play/user/Baturhancan'),
+                        soundController: soundController,
+                        child: Container(
+                          margin: EdgeInsets.all(2.5 * scale),
+                          color: tileColor,
+                          width: 300 * scale,
+                          height: 200 * scale,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,26 +77,26 @@ class _SocialPageWidgetState extends State<SocialPageWidget> {
                             const Center(
                               child: Image(height: 100, image: AssetImage('assets/icons/xbox.png')),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8, left: 16),
-                              child: FittedBox(
-                                child: Text(
-                                  'Xbox',
-                                  style: itemLabelLight,
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 8 * scale, left: 16 * scale),
+                                child: FittedBox(
+                                  child: Text(
+                                    'Xbox',
+                                    style: itemLabelLight,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )),
-                  TileWidget(
-                      url: Uri.parse('https://discordapp.com/users/baturhancan'),
-                      soundController: soundController,
-                      child: Container(
-                        margin: const EdgeInsets.all(2.5),
-                        color: tileColor,
-                        width: 300,
-                        height: 200,
+                            ],
+                          ),
+                        )),
+                    TileWidget(
+                        url: Uri.parse('https://discordapp.com/users/baturhancan'),
+                        soundController: soundController,
+                        child: Container(
+                          margin: EdgeInsets.all(2.5 * scale),
+                          color: tileColor,
+                          width: 300 * scale,
+                          height: 200 * scale,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,22 +105,25 @@ class _SocialPageWidgetState extends State<SocialPageWidget> {
                             const Center(
                               child: Image(height: 100, image: AssetImage('assets/icons/discord.png')),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8, left: 16),
-                              child: FittedBox(
-                                child: Text(
-                                  'Discord',
-                                  style: itemLabelLight,
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 8 * scale, left: 16 * scale),
+                                child: FittedBox(
+                                  child: Text(
+                                    'Discord',
+                                    style: itemLabelLight,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )),
-                ],
+                            ],
+                          ),
+                        )),
+                      if (isMobile) SizedBox(width: 16 * scale),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );
