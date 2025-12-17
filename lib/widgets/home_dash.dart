@@ -1,5 +1,6 @@
 import 'package:batu/theme/theme.dart';
 import 'package:batu/widgets/tile.dart';
+import 'package:batu/widgets/video_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:batu/controllers/sound_controller.dart';
 import 'package:provider/provider.dart';
@@ -169,7 +170,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                           children: [
                             TileWidget(
                               soundController: soundController,
-                              url: Uri.parse('https://www.artstation.com/batuerakman'),
+                              url: Uri.parse('https://erakm.artstation.com/'),
                               child: Container(
                                 margin: EdgeInsets.all(2.5 * scale),
                                 width: 345 * scale,
@@ -179,7 +180,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                                   children: [
                                     const Positioned.fill(
                                       child: Image(
-                                        image: AssetImage('assets/icons/artstation.png'),
+                                        image: AssetImage('assets/home/artstation.png'),
                                         fit: BoxFit.cover,
                                         alignment: Alignment.topCenter,
                                       ),
@@ -266,8 +267,42 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                               alignment: Alignment.center,
                               children: [
                                 Image(
-                                  image: AssetImage('assets/icons/dribbble.png'),
+                                  height: 50,
+                                  image: AssetImage(
+                                    'assets/icons/dribbble.png',
+                                  ),
                                 ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        TileWidget(
+                          url: Uri.parse('https://tomodoro.study'),
+                          soundController: soundController,
+                          child: Container(
+                            margin: const EdgeInsets.all(2.5),
+                            width: 260,
+                            height: 195,
+                            color: Colors.white,
+                            child: Stack(
+                              alignment: Alignment.bottomLeft,
+                              children: [
+                                const VideoTile(
+                                  videoPath: 'assets/projects/tomodoro.mp4',
+                                  fit: BoxFit.cover,
+                                ),
+                                Container(
+                                  height: 50,
+                                  width: double.infinity,
+                                  color: Colors.black.withAlpha(100),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 16),
+                                    child: Text(
+                                      'Tomodoro is live!',
+                                      style: itemLabel,
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),

@@ -17,7 +17,7 @@ class UserRow extends StatelessWidget {
           children: [
             const Image(height: 30, image: AssetImage('assets/icons/person.png')),
             Text(
-              '20',
+              '148',
               style: userRowLabel,
             ),
             const SizedBox(
@@ -28,12 +28,12 @@ class UserRow extends StatelessWidget {
               width: 8,
             ),
             Text(
-              '20',
+              '7',
               style: userRowLabel,
             ),
             const SizedBox(width: 32),
             Text(
-              '2013',
+              '483',
               style: userRowLabel,
             ),
             const Padding(

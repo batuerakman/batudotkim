@@ -61,7 +61,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'A game designer and developer. This portfolio is a tribute to the iconic Xbox 360 Metro UI that shaped my design sensibilities.',
+                  'A game designer and developer. This portfolio is a tribute to the iconic Xbox 360 Metro UI that shaped my design sensibilities.\n\nPlease do check out the web version!',
                   style: itemLabelLight.copyWith(
                     fontSize: 14,
                     color: Colors.white,
@@ -184,7 +184,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                       children: [
                         const Positioned.fill(
                           child: Image(
-                            image: AssetImage('assets/icons/artstation.png'),
+                            image: AssetImage('assets/home/artstation.png'),
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                           ),
@@ -307,7 +307,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'Tomodoro',
+                                      'Tomodoro is live!',
                                       style: itemLabel.copyWith(fontSize: 14),
                                     ),
                                   ),
@@ -331,7 +331,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                     color: tileColor,
                     child: const Center(
                       child: Image(
-                        height: 60,
+                        height: 50,
                         image: AssetImage('assets/icons/linkedin.png'),
                       ),
                     ),

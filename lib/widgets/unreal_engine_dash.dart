@@ -34,61 +34,73 @@ class _UnrealEngineDashWidgetState extends State<UnrealEngineDashWidget> {
                       if (isMobile) SizedBox(width: 16 * scale),
                       TileWidget(
                         soundController: soundController,
+                        url: Uri.parse('https://erakm.artstation.com/projects/ZlkQa0'),
                         child: Container(
                           margin: EdgeInsets.all(2.5 * scale),
-                          color: tileColor,
                           width: 400 * scale,
                           height: 300 * scale,
-                          child: Center(
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Positioned(
-                                  left: 8 * scale,
-                                  top: 12 * scale,
-                                  child: Text(
-                                    'Project 1\ncoming soon',
-                                    textAlign: TextAlign.center,
-                                    style: itemLabelLight.copyWith(color: Colors.black.withAlpha(20)),
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Positioned.fill(
+                                child: Image(
+                                  image: const AssetImage('assets/projects/vrship.png'),
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.topCenter,
+                                ),
+                              ),
+                              Container(
+                                height: 50 * scale,
+                                width: 400 * scale,
+                                color: Colors.black.withAlpha(50),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 16 * scale),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'VR Ship Simulation',
+                                      style: itemLabel,
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  'Project 1\ncoming soon',
-                                  textAlign: TextAlign.center,
-                                  style: itemLabelLight,
-                                ),
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         ),
                       ),
                       TileWidget(
                         soundController: soundController,
+                        url: Uri.parse('https://www.artstation.com/artwork/x3k93X'),
                         child: Container(
                           margin: EdgeInsets.all(2.5 * scale),
-                          color: tileColor,
                           width: 400 * scale,
                           height: 300 * scale,
-                          child: Center(
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Positioned(
-                                  left: 8 * scale,
-                                  top: 12 * scale,
-                                  child: Text(
-                                    'Project 2\ncoming soon',
-                                    textAlign: TextAlign.center,
-                                    style: itemLabelLight.copyWith(color: Colors.black.withAlpha(20)),
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Positioned.fill(
+                                child: Image(
+                                  image: const AssetImage('assets/projects/caesias.png'),
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.topCenter,
+                                ),
+                              ),
+                              Container(
+                                height: 50 * scale,
+                                width: 400 * scale,
+                                color: Colors.black.withAlpha(50),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 16 * scale),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Caesias',
+                                      style: itemLabel,
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  'Project 2\ncoming soon',
-                                  textAlign: TextAlign.center,
-                                  style: itemLabelLight,
-                                ),
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         ),
                       ),
