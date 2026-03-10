@@ -49,98 +49,98 @@ class _MediaDashWidgetState extends State<MediaDashWidget> with SingleTickerProv
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
                     children: [
-                    if (isMobile) SizedBox(width: 16 * scale),
-                    TileWidget(
-                      soundController: soundController,
-                      url: Uri.parse('https://letterboxd.com/batuerakm/'),
-                      child: Container(
-                        margin: EdgeInsets.all(2.5 * scale),
-                        width: 400 * scale,
-                        height: 400 * scale,
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        const Positioned.fill(
-                          child: Image(
-                            fit: BoxFit.cover,
-                            image: AssetImage('assets/icons/backtothefuture.png'),
-                          ),
-                        ),
-                        Positioned.fill(
-                          child: Container(
-                            color: Colors.black.withAlpha(100),
-                          ),
-                        ),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 16 * scale, bottom: 16 * scale),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Latest Watched',
-                                      style: itemLabel,
-                                    ),
-                                    Text(
-                                      'Back to the Future (1985)',
-                                      style: itemLabelLight.copyWith(color: Colors.white.withAlpha(128)),
-                                    ),
-                                  ],
+                      if (isMobile) SizedBox(width: 16 * scale),
+                      TileWidget(
+                        soundController: soundController,
+                        url: Uri.parse('https://letterboxd.com/batuerakm/'),
+                        child: Container(
+                          margin: EdgeInsets.all(2.5 * scale),
+                          width: 400 * scale,
+                          height: 400 * scale,
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              const Positioned.fill(
+                                child: Image(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/icons/go2021.png'),
                                 ),
                               ),
-                            )
-                          ],
+                              Positioned.fill(
+                                child: Container(
+                                  color: Colors.black.withAlpha(100),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 16 * scale, bottom: 16 * scale),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Latest Watched',
+                                        style: itemLabel,
+                                      ),
+                                      Text(
+                                        'Go (2001)',
+                                        style: itemLabelLight.copyWith(fontSize: 16 * scale, color: Colors.white.withAlpha(128)),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        TileWidget(
-                          soundController: soundController,
-                          url: Uri.parse('https://myanimelist.net/profile/malbatu'),
-                          child: Container(
-                            margin: EdgeInsets.all(2.5 * scale),
-                            width: 255 * scale,
-                            height: 195 * scale,
-                            color: tileColor,
-                            child: const Center(
-                              child: Image(
-                                height: 100,
-                                width: 170,
-                                image: AssetImage('assets/icons/mal.png'),
+                      Row(
+                        children: [
+                          TileWidget(
+                            soundController: soundController,
+                            url: Uri.parse('https://myanimelist.net/profile/malbatu'),
+                            child: Container(
+                              margin: EdgeInsets.all(2.5 * scale),
+                              width: 255 * scale,
+                              height: 195 * scale,
+                              color: tileColor,
+                              child: const Center(
+                                child: Image(
+                                  height: 100,
+                                  width: 170,
+                                  image: AssetImage('assets/icons/mal.png'),
+                                ),
                               ),
                             ),
                           ),
-                        ),
 
-                        // Letterboxd tile
-                        TileWidget(
-                          soundController: soundController,
-                          url: Uri.parse('https://letterboxd.com/batuerakm/'),
-                          child: Container(
-                            margin: EdgeInsets.all(2.5 * scale),
-                            width: 255 * scale,
-                            height: 195 * scale,
-                            color: tileColor,
-                            child: const Center(
-                              child: Image(
-                                height: 100,
-                                width: 160,
-                                image: AssetImage('assets/icons/letterboxd.png'),
+                          // Letterboxd tile
+                          TileWidget(
+                            soundController: soundController,
+                            url: Uri.parse('https://letterboxd.com/batuerakm/'),
+                            child: Container(
+                              margin: EdgeInsets.all(2.5 * scale),
+                              width: 255 * scale,
+                              height: 195 * scale,
+                              color: tileColor,
+                              child: const Center(
+                                child: Image(
+                                  height: 100,
+                                  width: 160,
+                                  image: AssetImage('assets/icons/letterboxd.png'),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    if (isMobile) SizedBox(width: 16 * scale),
-                  ],
+                        ],
+                      ),
+                      if (isMobile) SizedBox(width: 16 * scale),
+                    ],
+                  ),
                 ),
               ),
-            ),
             );
           },
         );

@@ -50,13 +50,13 @@ class _UnrealEngineDashWidgetState extends State<UnrealEngineDashWidget> {
                                 ),
                               ),
                               Container(
-                                height: 50 * scale,
+                                height: 48 * scale,
                                 width: 400 * scale,
                                 color: Colors.black.withAlpha(50),
                                 child: Padding(
                                   padding: EdgeInsets.only(left: 16 * scale),
                                   child: Align(
-                                    alignment: Alignment.centerLeft,
+                                    alignment: Alignment.topLeft,
                                     child: Text(
                                       'VR Ship Simulation',
                                       style: itemLabel,
@@ -86,13 +86,13 @@ class _UnrealEngineDashWidgetState extends State<UnrealEngineDashWidget> {
                                 ),
                               ),
                               Container(
-                                height: 50 * scale,
+                                height: 48 * scale,
                                 width: 400 * scale,
                                 color: Colors.black.withAlpha(50),
                                 child: Padding(
                                   padding: EdgeInsets.only(left: 16 * scale),
                                   child: Align(
-                                    alignment: Alignment.centerLeft,
+                                    alignment: Alignment.topLeft,
                                     child: Text(
                                       'Caesias',
                                       style: itemLabel,

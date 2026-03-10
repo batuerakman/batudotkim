@@ -61,7 +61,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'A game designer and developer. This portfolio is a tribute to the iconic Xbox 360 Metro UI that shaped my design sensibilities.\n\nPlease do check out the web version!',
+                  'A game designer and Flutter developer.\n\nPlease do check out the web version of my portfolio!',
                   style: itemLabelLight.copyWith(
                     fontSize: 14,
                     color: Colors.white,
@@ -172,10 +172,10 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                 ),
                 const SizedBox(height: tileSpacing),
 
-                // Large Portfolio tile
+                // Large Kanky tile
                 TileWidget(
+                  url: Uri.parse('https://kankyapp.com'),
                   soundController: soundController,
-                  url: Uri.parse('https://erakm.artstation.com'),
                   child: SizedBox(
                     width: largeTileWidth,
                     height: largeTileHeight,
@@ -184,7 +184,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                       children: [
                         const Positioned.fill(
                           child: Image(
-                            image: AssetImage('assets/home/artstation.png'),
+                            image: AssetImage('assets/home/kankyhome.png'),
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                           ),
@@ -198,7 +198,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Portfolio',
+                                'Kanky',
                                 style: itemLabel.copyWith(fontSize: 16),
                               ),
                             ),
@@ -307,7 +307,7 @@ class _DashboardHomeMobileWidgetState extends State<DashboardHomeMobileWidget> {
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'Tomodoro is live!',
+                                      'Tomodoro',
                                       style: itemLabel.copyWith(fontSize: 14),
                                     ),
                                   ),

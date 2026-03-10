@@ -19,8 +19,8 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
       builder: (context, soundController, child) {
         return LayoutBuilder(
           builder: (context, constraints) {
-            // Base width for design
-            const baseWidth = 400.0;
+            // Base width for design (2 large tiles + 2 small tiles)
+            const baseWidth = 1100.0;
             final scale = (constraints.maxWidth / baseWidth).clamp(0.3, 1.0);
             final isMobile = constraints.maxWidth < 900;
 
@@ -33,6 +33,7 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
                     mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
                     children: [
                       if (isMobile) SizedBox(width: 16 * scale),
+                      // Tomodoro tile
                       TileWidget(
                         url: Uri.parse('https://tomodoro.study'),
                         soundController: soundController,
@@ -40,22 +41,21 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
                           margin: EdgeInsets.all(2.5 * scale),
                           width: 400 * scale,
                           height: 300 * scale,
-                      color: Colors.white,
-                      child: Stack(
-                        alignment: Alignment.bottomLeft,
-                        children: [
-                              const VideoTile(
+                          color: Colors.white,
+                          child: Stack(
+                            alignment: Alignment.bottomLeft,
+                            children: [
+                              VideoTile(
                                 videoPath: 'assets/projects/tomodoro.mp4',
-                                fit: BoxFit.cover,
                               ),
                               Container(
-                                height: 60 * scale,
+                                height: 48 * scale,
                                 width: double.infinity,
                                 color: Colors.black.withAlpha(100),
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 16 * scale, bottom: 8 * scale),
+                                  padding: EdgeInsets.only(left: 16 * scale),
                                   child: Align(
-                                    alignment: Alignment.bottomLeft,
+                                    alignment: Alignment.topLeft,
                                     child: Text(
                                       'Tomodoro',
                                       style: itemLabel,
@@ -67,6 +67,43 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
                           ),
                         ),
                       ),
+                      // Kanky tile
+                      TileWidget(
+                        url: Uri.parse('https://kankyapp.com'),
+                        soundController: soundController,
+                        child: Container(
+                          margin: EdgeInsets.all(2.5 * scale),
+                          width: 420 * scale,
+                          height: 300 * scale,
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              const Positioned.fill(
+                                child: Image(
+                                  image: AssetImage('assets/icons/kankyapps.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Container(
+                                height: 48 * scale,
+                                width: double.infinity,
+                                color: Colors.black.withAlpha(100),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 16 * scale),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      'Kanky',
+                                      style: itemLabel,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+
                       if (isMobile) SizedBox(width: 16 * scale),
                     ],
                   ),

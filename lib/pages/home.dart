@@ -4,6 +4,8 @@ import 'package:batu/widgets/about_dash.dart';
 import 'package:batu/widgets/media_dash.dart';
 import 'package:batu/widgets/social_dash.dart';
 import 'package:batu/widgets/apps_dash.dart';
+import 'package:batu/widgets/terms_page.dart';
+import 'package:batu/widgets/privacy_page.dart';
 import 'package:batu/widgets/unreal_engine_dash.dart';
 
 import 'package:flutter/material.dart';
@@ -115,11 +117,26 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           fit: BoxFit.contain,
                           child: DashboardHomeWidget(),
                         ), // home
-                        SocialPageWidget(), // games
-                        MediaDashWidget(), // media
-                        UnrealEngineDashWidget(), // unreal engine
-                        AppsDashWidget(), // apps
-                        AboutDashWidget(), // about
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: AppsDashWidget(),
+                        ), // apps
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: MediaDashWidget(),
+                        ), // media
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: UnrealEngineDashWidget(),
+                        ), // unreal engine
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: SocialPageWidget(),
+                        ), // games
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: AboutDashWidget(),
+                        ), // about
                       ],
                     ),
                   ),
@@ -160,9 +177,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           if (!_isLoading)
             FadeTransition(
               opacity: _opacityAnimation,
-              child: isMobile
-                  ? _buildMobileLayout(context, padding)
-                  : _buildDesktopLayout(context, padding),
+              child: isMobile ? _buildMobileLayout(context, padding) : _buildDesktopLayout(context, padding),
             ),
           if (!_isLoading && !isMobile)
             Positioned(
@@ -178,6 +193,43 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                       'Select',
                       style: buttonPressLabel,
                     )
+                  ],
+                ),
+              ),
+            ),
+          // Privacy & Terms links - bottom right (desktop only)
+          if (!_isLoading && !isMobile)
+            Positioned(
+              bottom: padding,
+              right: padding * 2,
+              child: FadeTransition(
+                opacity: _opacityAnimation,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextButton(
+                      onPressed: () => showPrivacyPopup(context),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey.shade600,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                      child: Text(
+                        'Privacy Policy',
+                        style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade600),
+                      ),
+                    ),
+                    Text('|', style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade400)),
+                    TextButton(
+                      onPressed: () => showTermsPopup(context),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey.shade600,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                      child: Text(
+                        'Terms of Service',
+                        style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade600),
+                      ),
+                    ),
                   ],
                 ),
               ),

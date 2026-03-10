@@ -169,8 +169,8 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                         Row(
                           children: [
                             TileWidget(
+                              url: Uri.parse('https://kankyapp.com'),
                               soundController: soundController,
-                              url: Uri.parse('https://erakm.artstation.com/'),
                               child: Container(
                                 margin: EdgeInsets.all(2.5 * scale),
                                 width: 345 * scale,
@@ -180,9 +180,9 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                                   children: [
                                     const Positioned.fill(
                                       child: Image(
-                                        image: AssetImage('assets/home/artstation.png'),
+                                        image: AssetImage('assets/home/kankyhome.png'),
                                         fit: BoxFit.cover,
-                                        alignment: Alignment.topCenter,
+                                        alignment: Alignment.bottomLeft,
                                       ),
                                     ),
                                     Container(
@@ -192,7 +192,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                                       child: Padding(
                                         padding: EdgeInsets.only(left: 16 * scale),
                                         child: Text(
-                                          'Portfolio',
+                                          'Kanky',
                                           style: itemLabel,
                                         ),
                                       ),
@@ -298,7 +298,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 16),
                                     child: Text(
-                                      'Tomodoro is live!',
+                                      'Tomodoro',
                                       style: itemLabel,
                                     ),
                                   ),

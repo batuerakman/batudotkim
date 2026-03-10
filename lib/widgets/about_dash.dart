@@ -37,22 +37,7 @@ class AboutDashWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Xbox 360 inspired header
-              Row(
-                children: [
-                  Image.asset('assets/icons/xbox.png', height: isMobile ? 24 : 32),
-                  SizedBox(width: isMobile ? 8 : 16),
-                  Expanded(
-                    child: Text(
-                      'About This Project',
-                      style: itemLabel.copyWith(
-                        fontSize: headerFontSize,
-                        color: Colors.white,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
+              Image.asset('assets/icons/xbox.png', height: isMobile ? 24 : 32),
               SizedBox(height: isMobile ? 16 : 32),
               // Message content with Xbox-style typography
               ConstrainedBox(
@@ -70,7 +55,7 @@ class AboutDashWidget extends StatelessWidget {
                     ),
                     SizedBox(height: isMobile ? 12 : 16),
                     Text(
-                      'This site is a loving tribute to the iconic Xbox 360 "Metro" UI. As someone who grew up with the 360, its bold, minimalist tiles and smooth transitions left an indelible mark on my taste in design.',
+                      'This site is a loving tribute to the iconic Xbox 360 "Metro" UI. Thanks for visiting!',
                       style: itemLabelLight.copyWith(
                         height: 1.5,
                         fontSize: isMobile ? 14 : 16,

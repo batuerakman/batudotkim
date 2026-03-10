@@ -1,4 +1,4 @@
-enum NavigationItem { home, games, tvMovies, music, apps, about }
+enum NavigationItem { home, apps, tvMovies, music, games, about }
 
 extension NavigationItemExtension on NavigationItem {
   String get label {
