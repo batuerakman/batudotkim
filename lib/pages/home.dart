@@ -56,6 +56,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Precache heavy images so they're ready when tiles render
+    precacheImage(const AssetImage('assets/icons/kankyapps.png'), context);
+    precacheImage(const AssetImage('assets/home/kankyhome.png'), context);
+    precacheImage(const AssetImage('assets/icons/go2021.png'), context);
+  }
+
+  @override
   void dispose() {
     _animationController.dispose();
     _pageController.dispose();
