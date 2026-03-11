@@ -46,7 +46,6 @@ flutter:
   - assets/projects/vrship.png
   - assets/projects/caesias.png
   - assets/home/artstation.png
-  - assets/home/kankyhome.png
   - assets/home/githubBg.png
   - assets/home/gokuNukuBg.png
   - assets/home/spotifyBg.png
@@ -55,7 +54,7 @@ flutter:
   - assets/icons/mal.png
   - assets/icons/letterboxd.png
   - assets/icons/go2021.png
-  - assets/icons/kankyapps.png
+  - assets/home/kanky.png
   
   fonts:
     - family: SegoeUI

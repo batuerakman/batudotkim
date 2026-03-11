@@ -45,7 +45,7 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
                           child: Stack(
                             alignment: Alignment.bottomLeft,
                             children: [
-                              VideoTile(
+                              const VideoTile(
                                 videoPath: 'assets/projects/tomodoro.mp4',
                               ),
                               Container(
@@ -80,7 +80,7 @@ class _AppsDashWidgetState extends State<AppsDashWidget> {
                             children: [
                               const Positioned.fill(
                                 child: Image(
-                                  image: AssetImage('assets/icons/kankyapps.png'),
+                                  image: AssetImage('assets/home/kanky.png'),
                                   fit: BoxFit.cover,
                                 ),
                               ),

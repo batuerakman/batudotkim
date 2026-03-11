@@ -13,7 +13,6 @@ class AboutDashWidget extends StatelessWidget {
 
       final margin = isMobile ? 16.0 : (isTablet ? 32.0 : 48.0);
       final padding = isMobile ? 16.0 : (isTablet ? 24.0 : 32.0);
-      final headerFontSize = isMobile ? 22.0 : 28.0;
       final titleFontSize = isMobile ? 20.0 : 24.0;
 
       return Center(

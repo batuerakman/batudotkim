@@ -83,33 +83,36 @@ class _MetroPopupPage extends StatelessWidget {
                   child: Column(
                     children: [
                       // Header bar
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: isMobile ? 16 : 24,
-                          vertical: isMobile ? 12 : 16,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // Green Xbox logo
-                            Image.asset(
-                              'assets/icons/xbox.png',
-                              height: isMobile ? 20 : 28,
-                              color: const Color(0xff009600),
-                              colorBlendMode: BlendMode.srcIn,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Slim green top bar
+                          Container(
+                            height: 6,
+                            color: const Color(0xff009600),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isMobile ? 16 : 24,
+                              vertical: isMobile ? 8 : 12,
                             ),
-                            // Close button
-                            IconButton(
-                              icon: Icon(
-                                Icons.close,
-                                size: isMobile ? 22 : 28,
-                                color: Colors.grey.shade700,
-                              ),
-                              onPressed: () => Navigator.of(context).pop(),
-                              splashRadius: 20,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                // Close button
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: isMobile ? 22 : 28,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  splashRadius: 20,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       // Divider
                       Divider(

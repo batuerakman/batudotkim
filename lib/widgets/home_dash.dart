@@ -180,7 +180,7 @@ class _DashboardHomeWidgetState extends State<DashboardHomeWidget> {
                                   children: [
                                     const Positioned.fill(
                                       child: Image(
-                                        image: AssetImage('assets/home/kankyhome.png'),
+                                        image: AssetImage('assets/home/kanky.png'),
                                         fit: BoxFit.cover,
                                         alignment: Alignment.bottomLeft,
                                       ),

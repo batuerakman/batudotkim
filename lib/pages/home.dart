@@ -6,6 +6,7 @@ import 'package:batu/widgets/social_dash.dart';
 import 'package:batu/widgets/apps_dash.dart';
 import 'package:batu/widgets/terms_page.dart';
 import 'package:batu/widgets/privacy_page.dart';
+import 'package:batu/widgets/support_page.dart';
 import 'package:batu/widgets/unreal_engine_dash.dart';
 
 import 'package:flutter/material.dart';
@@ -59,8 +60,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void didChangeDependencies() {
     super.didChangeDependencies();
     // Precache heavy images so they're ready when tiles render
-    precacheImage(const AssetImage('assets/icons/kankyapps.png'), context);
-    precacheImage(const AssetImage('assets/home/kankyhome.png'), context);
+    precacheImage(const AssetImage('assets/home/kanky.png'), context);
+    precacheImage(const AssetImage('assets/home/kanky.png'), context);
     precacheImage(const AssetImage('assets/icons/go2021.png'), context);
   }
 
@@ -236,6 +237,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                       ),
                       child: Text(
                         'Terms of Service',
+                        style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade600),
+                      ),
+                    ),
+                    Text('|', style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade400)),
+                    TextButton(
+                      onPressed: () => showSupportPopup(context),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey.shade600,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                      child: Text(
+                        'Support',
                         style: itemLabelLight.copyWith(fontSize: 14, color: Colors.grey.shade600),
                       ),
                     ),

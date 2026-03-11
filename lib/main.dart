@@ -5,7 +5,9 @@ import 'package:batu/controllers/sound_controller.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:batu/widgets/terms_page.dart';
 import 'package:batu/widgets/privacy_page.dart';
+import 'package:batu/widgets/support_page.dart';
 import 'package:batu/widgets/background_gradient.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -28,8 +30,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/privacy-policy': (context) => const _StandalonePolicyPage(isPrivacy: true),
-        '/terms': (context) => const _StandalonePolicyPage(isPrivacy: false),
+        '/privacy-policy': (context) => const _StandalonePage(pageType: 'privacy'),
+        '/terms': (context) => const _StandalonePage(pageType: 'terms'),
+        '/support': (context) => const _StandalonePage(pageType: 'support'),
+        '/clowngame-pitchdeck': (context) => const _RedirectPage(url: 'https://www.canva.com/'), // Replace with actual Canva link
       },
     );
   }
@@ -37,9 +41,9 @@ class MyApp extends StatelessWidget {
 
 /// Standalone page for /privacy-policy and /terms URLs.
 /// Shows the policy content in a white panel over the gradient background.
-class _StandalonePolicyPage extends StatelessWidget {
-  final bool isPrivacy;
-  const _StandalonePolicyPage({required this.isPrivacy});
+class _StandalonePage extends StatelessWidget {
+  final String pageType; // 'privacy', 'terms', 'support'
+  const _StandalonePage({required this.pageType});
 
   @override
   Widget build(BuildContext context) {
@@ -66,32 +70,40 @@ class _StandalonePolicyPage extends StatelessWidget {
                 child: Column(
                   children: [
                     // Header bar
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: isMobile ? 16 : 24,
-                        vertical: isMobile ? 12 : 16,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            'assets/icons/xbox.png',
-                            height: isMobile ? 20 : 28,
-                            color: const Color(0xff009600),
-                            colorBlendMode: BlendMode.srcIn,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Slim green top bar
+                        Container(
+                          height: 6,
+                          color: const Color(0xff009600),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 16 : 24,
+                            vertical: isMobile ? 8 : 12,
                           ),
-                          IconButton(
-                            icon: Icon(Icons.close, size: isMobile ? 22 : 28, color: Colors.grey.shade700),
-                            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
-                            splashRadius: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.close, size: isMobile ? 22 : 28, color: Colors.grey.shade700),
+                                onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+                                splashRadius: 20,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
                     // Content
                     Expanded(
-                      child: isPrivacy ? const PrivacyContent() : const TermsContent(),
+                      child: switch (pageType) {
+                        'privacy' => const PrivacyContent(),
+                        'support' => const SupportContent(),
+                        _ => const TermsContent(),
+                      },
                     ),
                   ],
                 ),
@@ -99,6 +111,40 @@ class _StandalonePolicyPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Standalone page for external redirects
+class _RedirectPage extends StatefulWidget {
+  final String url;
+  const _RedirectPage({required this.url});
+
+  @override
+  State<_RedirectPage> createState() => _RedirectPageState();
+}
+
+class _RedirectPageState extends State<_RedirectPage> {
+  @override
+  void initState() {
+    super.initState();
+    _redirect();
+  }
+
+  Future<void> _redirect() async {
+    final uri = Uri.parse(widget.url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, webOnlyWindowName: '_self');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: CircularProgressIndicator(color: Colors.white),
       ),
     );
   }
